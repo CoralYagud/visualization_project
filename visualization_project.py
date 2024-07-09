@@ -30,6 +30,7 @@ food_data_melted, trade_data, need_data = load_data()
 
 # Initialize Dash app
 app = dash.Dash(__name__)
+server = app.server  # Add this line
 
 # Layout
 app.layout = html.Div([
@@ -284,4 +285,5 @@ def update_slider(n_intervals, play_clicks, stop_clicks, current_year, min_year,
 
 # Run app
 if __name__ == '__main__':
+    print("Starting the app...")
     app.run_server(debug=True)
