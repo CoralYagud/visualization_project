@@ -108,6 +108,8 @@ app.layout = html.Div([
         dcc.Input(id='num-countries', type='number', value=20, min=1, style={'marginBottom': '20px'}),
     ], style={'width': '50%', 'margin': '0 auto', 'padding': '20px', 'boxShadow': '0px 0px 15px rgba(0, 0, 0, 0.1)', 'borderRadius': '10px', 'backgroundColor': '#f9f9f9'}),
 
+    html.Div(style={'marginBottom': '40px'}),  # Added margin here
+
     html.Div([
         html.Div([
             dcc.Graph(id='heatmap', style={'height': '800px'})
@@ -250,7 +252,7 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
 
     fig_line.update_layout(
         title={
-            'text': f'Production of {selected_food} in {selected_country} Over Time',
+            'text': f'{selected_food} in {selected_country} Over Time',
             'font': {
                 'family': 'Arial, sans-serif',
                 'size': 24,
@@ -265,8 +267,8 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
         ),
         yaxis=dict(title='Production (tonnes)'),
         hovermode='x unified',
-        height=600,
-        width=1200,
+        height=500,
+        width=700,
         paper_bgcolor='rgba(0,0,0,0)'
     )
 
@@ -285,7 +287,7 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
 
     fig_heatmap.update_layout(
         title={
-            'text': f'Production of {selected_food} Over Years',
+            'text': f'{selected_food} Over Years',
             'font': {
                 'family': 'Arial, sans-serif',
                 'size': 24,
@@ -294,6 +296,7 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
             'x': 0.5,
             'xanchor': 'center'
         },
+        margin=dict(t=120),
         xaxis=dict(title="Year", side="top"),
         yaxis_title="Country",
         coloraxis_colorbar=dict(title="Production (tonnes)"),
@@ -337,4 +340,3 @@ def update_slider(n_intervals, play_clicks, stop_clicks, current_year, min_year,
 # Run app
 if __name__ == '__main__':
     app.run_server(debug=True)
-
