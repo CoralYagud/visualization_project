@@ -148,7 +148,8 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
             marker_opacity=1,
             marker_line_color=merged_data['Export Value'].apply(lambda x: exporting_color if pd.notnull(x) else non_exporting_color),
             showscale=True,
-            visible=True
+            visible=True,
+            hovertemplate='<b>%{location}</b><br>Production: %{z}<extra></extra>'
         ),
         go.Choropleth(
             locations=merged_data['Entity'],
@@ -158,7 +159,8 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
             marker_line_width=1,
             marker_opacity=1,
             showscale=True,
-            visible=False
+            visible=False,
+            hovertemplate='<b>%{location}</b><br>Production: %{z}<extra></extra>'
         ),
         go.Choropleth(
             locations=merged_data['Entity'],
@@ -169,7 +171,8 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
             marker_opacity=0.8,
             marker_line_color=merged_data['Export Value'].apply(lambda x: exporting_color if pd.notnull(x) else non_exporting_color),
             showscale=False,
-            visible=False
+            visible=False,
+            hovertemplate='<b>%{location}</b><br>Production: %{z}<extra></extra>'
         )
     ])
 
@@ -207,12 +210,12 @@ def update_charts(selected_country, selected_food, selected_year, num_countries)
             'x': 0.5,
             'xanchor': 'center'
         },
-        legend=dict(x=0.05, y=0, traceorder='normal', font=dict(size=12)),
+        legend=dict(x=0.07, y=0, traceorder='normal', font=dict(size=12)),
         height=600,
         width=1300,
         annotations=[
             dict(
-                x=0.05, y=0.01,
+                x=0.08, y=0.01,
                 xref='paper', yref='paper',
                 text=f'<span style="color:{exporting_color}">⬤</span> Exporting to Israel<br>'
                     f'<span style="color:{non_exporting_color}">⬤</span> Not Exporting to Israel<br>'
