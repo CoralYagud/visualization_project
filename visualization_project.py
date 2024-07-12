@@ -56,7 +56,7 @@ app.layout = html.Div([
                         'textShadow': '2px 2px 4px black'
                     }),
         ], style={
-            'backgroundImage': 'url(/assets/War_on_the_Plate.png)',
+            'backgroundImage': 'url(/assets/War_on_the_Plate.jpg)',
             'backgroundSize': 'cover',
             'textAlign': 'center',
             'padding': '40px 0',
