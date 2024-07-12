@@ -34,7 +34,7 @@ non_exporting_color = '#d62728'  # Dark red
 
 # Initialize Dash app
 app = dash.Dash(__name__)
-server = app.server  # Add this line
+server = app.server  
 
 # Layout
 app.layout = html.Div([
